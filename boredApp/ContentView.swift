@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct ContentView : View {
+    @State var service = Service()
+
     var body: some View {
-        Text("Hello World")
+        NavigationView {
+            VStack {
+                CardView(activity: service.activityResult)
+                HStack {
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                        Text("Previous").padding()
+                    }
+                    Spacer()
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                        Text("Next").padding()
+                    }
+                }
+            }.navigationBarTitle(Text("Find an activity"))
+        }
     }
 }
 
@@ -21,3 +36,5 @@ struct ContentView_Previews : PreviewProvider {
     }
 }
 #endif
+
+

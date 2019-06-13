@@ -15,6 +15,10 @@
 		8176C76E22B1645C0089C0DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8176C76D22B1645C0089C0DD /* Preview Assets.xcassets */; };
 		8176C77122B1645C0089C0DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8176C76F22B1645C0089C0DD /* LaunchScreen.storyboard */; };
 		8176C77C22B1645C0089C0DD /* boredAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176C77B22B1645C0089C0DD /* boredAppTests.swift */; };
+		8176C78722B16F500089C0DD /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176C78622B16F500089C0DD /* CardView.swift */; };
+		8176C78922B16F8F0089C0DD /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176C78822B16F8F0089C0DD /* Activity.swift */; };
+		8176C78B22B2796E0089C0DD /* CardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176C78A22B2796E0089C0DD /* CardDetail.swift */; };
+		8176C78F22B2950A0089C0DD /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176C78E22B2950A0089C0DD /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,10 @@
 		8176C77722B1645C0089C0DD /* boredAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = boredAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8176C77B22B1645C0089C0DD /* boredAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boredAppTests.swift; sourceTree = "<group>"; };
 		8176C77D22B1645C0089C0DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8176C78622B16F500089C0DD /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		8176C78822B16F8F0089C0DD /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		8176C78A22B2796E0089C0DD /* CardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetail.swift; sourceTree = "<group>"; };
+		8176C78E22B2950A0089C0DD /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +91,11 @@
 			children = (
 				8176C76122B1645A0089C0DD /* AppDelegate.swift */,
 				8176C76322B1645A0089C0DD /* SceneDelegate.swift */,
+				8176C78E22B2950A0089C0DD /* Service.swift */,
+				8176C78822B16F8F0089C0DD /* Activity.swift */,
 				8176C76822B1645A0089C0DD /* ContentView.swift */,
+				8176C78622B16F500089C0DD /* CardView.swift */,
+				8176C78A22B2796E0089C0DD /* CardDetail.swift */,
 				8176C76A22B1645C0089C0DD /* Assets.xcassets */,
 				8176C76F22B1645C0089C0DD /* LaunchScreen.storyboard */,
 				8176C77222B1645C0089C0DD /* Info.plist */,
@@ -211,10 +223,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8176C78B22B2796E0089C0DD /* CardDetail.swift in Sources */,
+				8176C78F22B2950A0089C0DD /* Service.swift in Sources */,
+				8176C78922B16F8F0089C0DD /* Activity.swift in Sources */,
 				8176C76722B1645A0089C0DD /* boredApp.xcdatamodeld in Sources */,
 				8176C76222B1645A0089C0DD /* AppDelegate.swift in Sources */,
 				8176C76922B1645A0089C0DD /* ContentView.swift in Sources */,
 				8176C76422B1645A0089C0DD /* SceneDelegate.swift in Sources */,
+				8176C78722B16F500089C0DD /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
