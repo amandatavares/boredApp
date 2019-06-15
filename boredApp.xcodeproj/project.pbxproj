@@ -20,6 +20,8 @@
 		8176C78B22B2796E0089C0DD /* CardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176C78A22B2796E0089C0DD /* CardDetail.swift */; };
 		8176C78F22B2950A0089C0DD /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176C78E22B2950A0089C0DD /* Service.swift */; };
 		81A2A7A422B574920086CDAC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2A7A322B574920086CDAC /* Enums.swift */; };
+		81A2A7AA22B58FAB0086CDAC /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2A7A922B58FAB0086CDAC /* TypeView.swift */; };
+		81A2A7AE22B5A0010086CDAC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2A7AD22B5A0010086CDAC /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		8176C78A22B2796E0089C0DD /* CardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetail.swift; sourceTree = "<group>"; };
 		8176C78E22B2950A0089C0DD /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		81A2A7A322B574920086CDAC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		81A2A7A922B58FAB0086CDAC /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		81A2A7AD22B5A0010086CDAC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,14 +95,12 @@
 		8176C76022B1645A0089C0DD /* boredApp */ = {
 			isa = PBXGroup;
 			children = (
-				81A2A7A322B574920086CDAC /* Enums.swift */,
+				81A2A7A522B58DFF0086CDAC /* Helper */,
+				81A2A7A822B58E780086CDAC /* Model */,
+				81A2A7A722B58E570086CDAC /* Views */,
+				81A2A7A622B58E160086CDAC /* Components */,
 				8176C76122B1645A0089C0DD /* AppDelegate.swift */,
 				8176C76322B1645A0089C0DD /* SceneDelegate.swift */,
-				8176C78E22B2950A0089C0DD /* Service.swift */,
-				8176C78822B16F8F0089C0DD /* Activity.swift */,
-				8176C76822B1645A0089C0DD /* ContentView.swift */,
-				8176C78622B16F500089C0DD /* CardView.swift */,
-				8176C78A22B2796E0089C0DD /* CardDetail.swift */,
 				8176C76A22B1645C0089C0DD /* Assets.xcassets */,
 				8176C76F22B1645C0089C0DD /* LaunchScreen.storyboard */,
 				8176C77222B1645C0089C0DD /* Info.plist */,
@@ -123,6 +125,42 @@
 				8176C77D22B1645C0089C0DD /* Info.plist */,
 			);
 			path = boredAppTests;
+			sourceTree = "<group>";
+		};
+		81A2A7A522B58DFF0086CDAC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8176C78E22B2950A0089C0DD /* Service.swift */,
+				81A2A7A322B574920086CDAC /* Enums.swift */,
+				81A2A7AD22B5A0010086CDAC /* Extensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		81A2A7A622B58E160086CDAC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8176C78622B16F500089C0DD /* CardView.swift */,
+				81A2A7A922B58FAB0086CDAC /* TypeView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		81A2A7A722B58E570086CDAC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8176C76822B1645A0089C0DD /* ContentView.swift */,
+				8176C78A22B2796E0089C0DD /* CardDetail.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		81A2A7A822B58E780086CDAC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8176C78822B16F8F0089C0DD /* Activity.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A2A7AA22B58FAB0086CDAC /* TypeView.swift in Sources */,
 				8176C78B22B2796E0089C0DD /* CardDetail.swift in Sources */,
 				8176C78F22B2950A0089C0DD /* Service.swift in Sources */,
 				8176C78922B16F8F0089C0DD /* Activity.swift in Sources */,
@@ -234,6 +273,7 @@
 				8176C76922B1645A0089C0DD /* ContentView.swift in Sources */,
 				8176C76422B1645A0089C0DD /* SceneDelegate.swift in Sources */,
 				81A2A7A422B574920086CDAC /* Enums.swift in Sources */,
+				81A2A7AE22B5A0010086CDAC /* Extensions.swift in Sources */,
 				8176C78722B16F500089C0DD /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

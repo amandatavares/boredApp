@@ -20,7 +20,7 @@ class Service: BindableObject {
     let baseUrl = "http://www.boredapi.com/api/activity/"
 
     init() {
-        getActivity(from: baseUrl)
+        getActivity()
     }
     func getActivity(from url: String = "http://www.boredapi.com/api/activity/") {
         // String to url
@@ -35,6 +35,7 @@ class Service: BindableObject {
             do {
                 let activityResult = try JSONDecoder().decode(Activity.self, from: data)
                 print(activityResult)
+                print(Type.allCases)
                 DispatchQueue.main.async {
                     self.activityResult = activityResult
                 }

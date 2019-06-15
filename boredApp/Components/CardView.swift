@@ -16,7 +16,7 @@ struct CardView : View {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .padding()
-                    .relativeHeight(0.9)
+                    .frame(width: 350, height: 300, alignment: .leading)
                     .foregroundColor(Color.white)
                     .shadow(radius: Length(integerLiteral: 10))
                 VStack(alignment: .leading) {

@@ -30,7 +30,7 @@ struct CardDetail : View {
                 }
             }
             .padding(.horizontal)
-            .relativeHeight(0.8)
+            .relativeHeight(0.9)
         }
             .navigationBarTitle(Text(activity.activity))
             .padding(.horizontal)
