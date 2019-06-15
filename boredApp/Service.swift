@@ -17,14 +17,14 @@ class Service: BindableObject {
         }
     }
     var previousKey: String = ""
-    
+    let baseUrl = "http://www.boredapi.com/api/activity/"
+
     init() {
-        loadData()
+        getActivity(from: baseUrl)
     }
-    func loadData() {
-        let baseUrl = "http://www.boredapi.com/api/activity/"
+    func getActivity(from url: String = "http://www.boredapi.com/api/activity/") {
         // String to url
-        guard let url = URL(string: baseUrl) else {return}
+        guard let url = URL(string: url) else {return}
         
         // Singleton of URLSession to catch data through URL
         URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -41,6 +41,10 @@ class Service: BindableObject {
             } catch let error {
                 print("Failed in \(error)")
             }
-            }.resume()
+        }.resume()
+        
+    }
+    func getActivityBy(endpoint:String, param: String) {
+        getActivity(from: self.baseUrl+endpoint+param)
     }
 }

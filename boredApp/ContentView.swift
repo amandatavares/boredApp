@@ -18,7 +18,7 @@ struct ContentView : View {
                 CardView(activity: service.activityResult)
                 HStack {
                     Button(action: {
-                        self.service.loadData()
+                        self.service.getActivityBy(endpoint: EndpointsBy.key.description, param: "6482790")
                     }) {
                         Text("Previous").padding()
                     }
@@ -26,7 +26,7 @@ struct ContentView : View {
                     Button(action: {
                         self.service.previousKey = self.service.activityResult.key
 
-                        self.service.loadData()
+                        self.service.getActivity()
                     }) {
                         Text("Next").padding()
                     }
