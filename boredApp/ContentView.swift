@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ContentView : View {
     @State var service = Service()
-//    var previousKey: String?
     
     var body: some View {
         NavigationView {
@@ -18,7 +17,7 @@ struct ContentView : View {
                 CardView(activity: service.activityResult)
                 HStack {
                     Button(action: {
-                        self.service.getActivityBy(endpoint: EndpointsBy.key.description, param: "6482790")
+                        self.service.getActivityBy(endpoint: EndpointsBy.key.description, param: self.service.previousKey)
                     }) {
                         Text("Previous").padding()
                     }
