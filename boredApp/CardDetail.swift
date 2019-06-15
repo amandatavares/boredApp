@@ -13,7 +13,7 @@ struct CardDetail : View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("\(activity.type)")
+            Text(activity.type)
                 .font(.title)
                 .color(.secondary)
             Divider()
@@ -38,10 +38,10 @@ struct CardDetail : View {
     }
 }
 
-//#if DEBUG
-//struct CardDetail_Previews : PreviewProvider {
-//    static var previews: some View {
-//        CardDetail(activity: activityTest)
-//    }
-//}
-//#endif
+#if DEBUG
+struct CardDetail_Previews : PreviewProvider {
+    static var previews: some View {
+        CardDetail(activity: activityTest)
+    }
+}
+#endif

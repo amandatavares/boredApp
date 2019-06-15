@@ -11,13 +11,17 @@ import Combine
 
 class Service: BindableObject {
     var didChange = PassthroughSubject<Service, Never>()
-    var activityResult: Activity? {
+    var activityResult = Activity() {
         didSet {
             didChange.send(self)
         }
     }
+    var previousKey: String = ""
     
     init() {
+        loadData()
+    }
+    func loadData() {
         let baseUrl = "http://www.boredapi.com/api/activity/"
         // String to url
         guard let url = URL(string: baseUrl) else {return}
@@ -30,12 +34,13 @@ class Service: BindableObject {
             }
             do {
                 let activityResult = try JSONDecoder().decode(Activity.self, from: data)
+                print(activityResult)
                 DispatchQueue.main.async {
                     self.activityResult = activityResult
                 }
             } catch let error {
                 print("Failed in \(error)")
             }
-        }.resume()
+            }.resume()
     }
 }

@@ -10,17 +10,24 @@ import SwiftUI
 
 struct ContentView : View {
     @State var service = Service()
-
+//    var previousKey: String?
+    
     var body: some View {
         NavigationView {
             VStack {
                 CardView(activity: service.activityResult)
                 HStack {
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    Button(action: {
+                        self.service.loadData()
+                    }) {
                         Text("Previous").padding()
                     }
                     Spacer()
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    Button(action: {
+                        self.service.previousKey = self.service.activityResult.key
+
+                        self.service.loadData()
+                    }) {
                         Text("Next").padding()
                     }
                 }

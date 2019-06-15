@@ -23,12 +23,13 @@ struct CardView : View {
                     Text(activity.activity)
                         .font(.title)
                         .color(Color.primary)
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
                         .lineLimit(3)
                         .padding([.leading, .bottom, .trailing])
                         .truncationMode(.tail)
                     Text(activity.type)
                         .font(.title)
+                        .fontWeight(.light)
                         .color(Color.secondary)
                         .padding([.leading, .trailing])
                 }
@@ -37,10 +38,10 @@ struct CardView : View {
     }
 }
 
-//#if DEBUG
-//struct CardView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        CardView(activity: )
-//    }
-//}
-//#endif
+#if DEBUG
+struct CardView_Previews : PreviewProvider {
+    static var previews: some View {
+        CardView(activity: activityTest)
+    }
+}
+#endif
