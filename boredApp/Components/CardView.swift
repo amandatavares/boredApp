@@ -15,10 +15,11 @@ struct CardView : View {
         return NavigationButton(destination: CardDetail(activity: activity), isDetail: true) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .padding()
-                    .frame(width: 350, height: 300, alignment: .leading)
+//                    .padding()
+                    .relativeWidth(0.9)
+                    .relativeHeight(1)
                     .foregroundColor(Color.white)
-                    .shadow(radius: Length(integerLiteral: 10))
+                    .shadow(radius: Length(integerLiteral: 5))
                 VStack(alignment: .leading) {
                     Text(activity.activity)
                         .font(.title)
@@ -32,8 +33,8 @@ struct CardView : View {
                         .fontWeight(.light)
                         .color(Color.secondary)
                         .padding([.leading, .trailing])
-                }
-            }
+                }.padding()
+            }.padding()
         }
     }
 }

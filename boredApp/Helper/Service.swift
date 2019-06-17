@@ -34,8 +34,8 @@ class Service: BindableObject {
             }
             do {
                 let activityResult = try JSONDecoder().decode(Activity.self, from: data)
-                print(activityResult)
-                print(Type.allCases)
+//                print(activityResult)
+//                print(Type.allCases)
                 DispatchQueue.main.async {
                     self.activityResult = activityResult
                 }

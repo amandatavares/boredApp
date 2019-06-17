@@ -19,11 +19,11 @@ struct TypeView : View {
                     .foregroundColor(Color(UIColor: type.getColor()))
                     .relativeWidth(1)
                     .relativeHeight(1)
-                Image(uiImage: type.getIcon())
+                Image(uiImage: type.getIcon()).padding()
             }
             Text(type.getName()).color(Color.primary)
         }
-        .frame(width: 70.0, height: 100.0)
+        .padding(.leading, 15)
     }
 }
 

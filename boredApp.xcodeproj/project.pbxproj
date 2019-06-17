@@ -22,6 +22,7 @@
 		81A2A7A422B574920086CDAC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2A7A322B574920086CDAC /* Enums.swift */; };
 		81A2A7AA22B58FAB0086CDAC /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2A7A922B58FAB0086CDAC /* TypeView.swift */; };
 		81A2A7AE22B5A0010086CDAC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2A7AD22B5A0010086CDAC /* Extensions.swift */; };
+		81A2A7B022B70EAF0086CDAC /* TypeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2A7AF22B70EAF0086CDAC /* TypeRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		81A2A7A322B574920086CDAC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		81A2A7A922B58FAB0086CDAC /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
 		81A2A7AD22B5A0010086CDAC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		81A2A7AF22B70EAF0086CDAC /* TypeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				8176C76822B1645A0089C0DD /* ContentView.swift */,
+				81A2A7AF22B70EAF0086CDAC /* TypeRow.swift */,
 				8176C78A22B2796E0089C0DD /* CardDetail.swift */,
 			);
 			path = Views;
@@ -274,6 +277,7 @@
 				8176C76422B1645A0089C0DD /* SceneDelegate.swift in Sources */,
 				81A2A7A422B574920086CDAC /* Enums.swift in Sources */,
 				81A2A7AE22B5A0010086CDAC /* Extensions.swift in Sources */,
+				81A2A7B022B70EAF0086CDAC /* TypeRow.swift in Sources */,
 				8176C78722B16F500089C0DD /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,23 +14,11 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Categories")
-                    .font(.headline)
-                    .padding(.top, 5)
-                HStack {
-                    ForEach(Type.allCases.identified(by: \.self)) { type in
-                        VStack(alignment: .leading) {
-                            ScrollView(showsHorizontalIndicator: true) {
-                                Button(action: { self.service.getActivityBy(endpoint: EndpointsBy.type.description, param: type.getName())
-                                }) {
-                                    TypeView(type: type)
-                                }.accentColor(Color.primary)
-                            }.frame(width: 80)
-                        }
-                    }
-                }.padding(.horizontal)
+                TypeRow(types: Type.allCases)
                
                 CardView(activity: service.activityResult)
+                    .offset(x: 0, y: -50)
+                    .padding(.top, -50)
                 
                 HStack {
                     Button(action: {
@@ -59,5 +47,8 @@ struct ContentView_Previews : PreviewProvider {
     }
 }
 #endif
+
+
+
 
 
