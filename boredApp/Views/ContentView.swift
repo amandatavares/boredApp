@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView : View {
     @State var service = Service()
+    @State var isPresented = false
     
     var body: some View {
         NavigationView {
@@ -20,22 +21,16 @@ struct ContentView : View {
                     .offset(x: 0, y: -50)
                     .padding(.top, -50)
                 
-                HStack {
+                ToolButtonsView()
+                
+            }
+                .navigationBarTitle(Text("Find an activity"))
+                .navigationBarItems(trailing:
                     Button(action: {
-                        self.service.getActivityBy(endpoint: EndpointsBy.key.description, param: self.service.previousKey)
-                    }) {
-                        Text("Previous").padding()
-                    }
-                    Spacer()
-                    Button(action: {
-                        self.service.previousKey = self.service.activityResult.key
-
-                        self.service.getActivity()
-                    }) {
-                        Text("Next").padding()
-                    }
-                }
-            }.navigationBarTitle(Text("Find an activity"))
+                        self.isPresented = true
+                    }, label: {
+                        Image(uiImage: UIImage(systemName: "line.horizontal.3.decrease.circle.fill")!).padding()
+                    })).presentation( isPresented ? Modal(FilterView(), onDismiss: { self.isPresented.toggle() }) : nil )
         }
     }
 }
@@ -47,6 +42,7 @@ struct ContentView_Previews : PreviewProvider {
     }
 }
 #endif
+
 
 
 

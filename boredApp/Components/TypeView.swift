@@ -22,6 +22,7 @@ struct TypeView : View {
                 Image(uiImage: type.getIcon()).padding()
             }
             Text(type.getName()).color(Color.primary)
+                .frame(minWidth: 0, idealWidth: 80, maxWidth: .infinity, minHeight: 0, idealHeight: 10, maxHeight: 30, alignment: Alignment.center)
         }
         .padding(.leading, 15)
     }

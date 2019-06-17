@@ -40,7 +40,7 @@ extension Type {
         case .education:
             return "education"
         case .recreational:
-            return "recreational"
+            return "recreative"
         case .social:
             return "social"
         case .diy:

@@ -17,6 +17,7 @@ struct TypeRow : View {
             Text("Categories")
                 .font(.headline)
                 .padding(.leading, 15)
+                .padding(.bottom, 10)
             
             ScrollView(showsHorizontalIndicator: false) {
                 HStack(alignment: .top, spacing: 0) {
