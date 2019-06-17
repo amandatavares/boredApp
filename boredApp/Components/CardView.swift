@@ -18,7 +18,7 @@ struct CardView : View {
 //                    .padding()
                     .relativeWidth(0.9)
                     .relativeHeight(1)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color(UIColor: UIColor.systemGray6))
                     .shadow(radius: Length(integerLiteral: 5))
                 VStack(alignment: .leading) {
                     Text(activity.activity)

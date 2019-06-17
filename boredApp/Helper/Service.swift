@@ -45,7 +45,12 @@ class Service: BindableObject {
         }.resume()
         
     }
-    func getActivityBy(endpoint:String, param: String) {
-        getActivity(from: self.baseUrl+endpoint+param)
+    func getActivityBy(endpoint:[String], param: [String]) {
+        zip(endpoint, param).forEach { (iEnd, iParam) in
+//            getActivity(from: self.baseUrl+iEnd+iParam)
+            //Lembrar de colocar o & entre os parametros. Está dando erro de notFound, mas o print está ok
+            print(iEnd)
+            print(iParam)
+        }
     }
 }

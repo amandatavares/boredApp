@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct ToolButtonsView : View {
-    @State var service = Service()
-    
+    var service: Service
+
     var body: some View {
         return HStack {
             Button(action: {
-                self.service.getActivityBy(endpoint: EndpointsBy.key.description, param: self.service.previousKey)
+                self.service.getActivityBy(endpoint: [EndpointsBy.key.description], param: [self.service.previousKey])
+//                print("test")
+
             }) {
                 Text("Previous").padding()
             }
@@ -33,7 +35,7 @@ struct ToolButtonsView : View {
 #if DEBUG
 struct ToolButtonsView_Previews : PreviewProvider {
     static var previews: some View {
-        ToolButtonsView()
+        ToolButtonsView(service: Service())
     }
 }
 #endif

@@ -156,6 +156,14 @@ struct SystemColor {
     }
 }
 
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
+
 #if !swift(>=4.2)
 public protocol CaseIterable {
     associatedtype AllCases: Collection where AllCases.Element == Self

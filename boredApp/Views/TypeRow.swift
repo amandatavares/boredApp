@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TypeRow : View {
     var types: [Type]
-    @State var service = Service()
+    var service: Service
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {
@@ -23,7 +23,8 @@ struct TypeRow : View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(types.identified(by: \.self)) { type in
                         Button(action: {
-                            self.service.getActivityBy(endpoint: EndpointsBy.type.description, param: type.getName())
+                            self.service.getActivityBy(endpoint: [EndpointsBy.type.description], param: [type.getName()])
+//                            print("test")
                         }) {
                             TypeView(type: type)
                             }.accentColor(Color.primary)
