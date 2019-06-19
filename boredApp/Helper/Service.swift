@@ -55,16 +55,18 @@ class Service: BindableObject {
         }.resume()
     }
     
-    func getActivityBy(parameters: [Endpoints:String]?) {
+    func getActivityBy(parameters: [[Endpoints:String]]?) {
         // clear queries
         self.urlComponents.queryItems = nil
         
         var queryItems = [URLQueryItem]()
         
-        if let param = parameters {
-            for (key, value) in param {
-                let queryItem = URLQueryItem(name: key.rawValue, value: "\(value)")
-                queryItems.append(queryItem)
+        if let parameters = parameters {
+            for param in parameters {
+                for (key, value) in param {
+                    let queryItem = URLQueryItem(name: key.rawValue, value: "\(value)")
+                    queryItems.append(queryItem)
+                }
             }
             self.urlComponents.queryItems = queryItems
         }

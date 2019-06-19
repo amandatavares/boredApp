@@ -20,4 +20,4 @@ struct Activity: Decodable {
     var key: String = ""
 }
 
-let activityTest = Activity(activity: "Fazer hambúrguer artesenal", accessibility: 1.0, type: "DIY", participants: 1, price: 0.6, link: nil, key: "1111")
+let activityTest = Activity(activity: "Fazer hambúrguer artesenal na casa do diferenciado", accessibility: 1.0, type: "DIY", participants: 1, price: 0.6, link: nil, key: "1111")

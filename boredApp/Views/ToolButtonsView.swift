@@ -14,10 +14,12 @@ struct ToolButtonsView : View {
     var body: some View {
         return HStack {
             Button(action: {
-                self.service.getActivityBy(parameters: [Endpoints.key : self.service.previousKey])
+                self.service.getActivityBy(parameters: [[Endpoints.key : self.service.previousKey]])
 //                print("test")
             }) {
-                Text("Previous").padding()
+                Text("Previous")
+                    .padding()
+                    .accentColor(Color(UIColor: UIColor.systemPurple))
             }
             Spacer()
             Button(action: {
@@ -25,7 +27,9 @@ struct ToolButtonsView : View {
                 
                 self.service.getActivityBy(parameters: nil)
             }) {
-                Text("Next").padding()
+                Text("Next")
+                    .padding()
+                    .accentColor(Color(UIColor: UIColor.systemPurple))
             }
         }
     }

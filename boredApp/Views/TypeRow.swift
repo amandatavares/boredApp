@@ -23,7 +23,7 @@ struct TypeRow : View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(types.identified(by: \.self)) { type in
                         Button(action: {
-                            self.service.getActivityBy(parameters: [Endpoints.type:type.getName()])
+                            self.service.getActivityBy(parameters: [[Endpoints.type:type.getName()]])
                         }) {
                             TypeView(type: type)
                         }.accentColor(Color.primary)

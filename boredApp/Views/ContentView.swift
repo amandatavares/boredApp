@@ -19,7 +19,7 @@ struct ContentView : View {
                
                 CardView(activity: service.activityResult)
                     .offset(x: 0, y: -50)
-                    .padding(.top, -50)
+                    .padding(.top, -60)
                 
                 ToolButtonsView(service: self.service)
                 
