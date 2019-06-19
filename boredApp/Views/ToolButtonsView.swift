@@ -23,7 +23,7 @@ struct ToolButtonsView : View {
             Button(action: {
                 self.service.previousKey = self.service.activityResult.key
                 
-                self.service.getActivity()
+                self.service.getActivity(from: self.service.urlComponents.url?.absoluteURL)
             }) {
                 Text("Next").padding()
             }

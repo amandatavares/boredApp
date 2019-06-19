@@ -17,27 +17,24 @@ class Service: BindableObject {
         }
     }
     var previousKey: String = ""
-//    let baseUrl = "http://www.boredapi.com/api/activity/"
+    let baseUrl = "http://www.boredapi.com/api/activity/"
     
    
-    var urlComponents: URLComponents {
-        var urlComponents = URLComponents()
+    var urlComponents: URLComponents
+   
+    init() {
+        self.urlComponents = URLComponents()
         urlComponents.scheme = "http"
         urlComponents.host = "www.boredapi.com"
         urlComponents.path = "/api/activity/"
-        urlComponents.queryItems = [URLQueryItem]()
-
-        return urlComponents
+        
+        getActivity(from: self.urlComponents.url?.absoluteURL)
+//        print(self.urlComponents.url?.absoluteString)
     }
-   
- 
-    init() {
-        getActivity()
-    }
-    func getActivity() {
+    func getActivity(from url: URL?) {
         
         // String to url
-        guard let url = self.urlComponents.url else {return}
+        guard let url = url else {return}
 
         // Singleton of URLSession to catch data through URL
         URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -58,31 +55,21 @@ class Service: BindableObject {
         }.resume()
     }
     
+    //No filtro, algumas requisições são feitas ao mesmo tempo, outras não. A ideia é que se saiba qual endpoint que será alterado no momento, e alterar o queryITems adicionando ou modificando o urlComponents.queryItems.
+    //urlComponents se acusa como get-only, e adicionar uma função mutating nas extensions nao ajudou
+    //não queria colocar os query itens na tora, mas faço se for preciso. o que quero de verdade é aprender a manipular essa struct maldita
     func getActivityBy(parameters: [Endpoints:String]) {
-//        urlComponents.setQueryItems(with: parameters)
-        guard var queryItems = self.urlComponents.queryItems else {
-            print("Negocio is nil")
-            return
-        }
+
+        var queryItems = [URLQueryItem]()
+        
         for (key, value) in parameters {
             let queryItem = URLQueryItem(name: key.rawValue, value: "\(value)")
             queryItems.append(queryItem)
         }
-//        if var queryItems = self.urlComponents.queryItems {
-//            for (key, value) in parameters {
-//                let queryItem = URLQueryItem(name: key.rawValue, value: "\(value)")
-//                queryItems.append(queryItem)
-//            }
-////            print(queryItems)
-//        }
-        print(queryItems)
-        print(self.urlComponents.queryItems)
-        if let queryItems = self.urlComponents.queryItems {
-//            print(queryItems)
-            for queryItem in queryItems {
-                print("\(queryItem.name): \(queryItem.value)")
-            }
-        }
-        print(urlComponents.url!)
+        
+        self.urlComponents.queryItems = queryItems
+        getActivity(from: self.urlComponents.url)
+        
     }
+    
 }

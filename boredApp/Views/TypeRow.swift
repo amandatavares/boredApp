@@ -24,10 +24,9 @@ struct TypeRow : View {
                     ForEach(types.identified(by: \.self)) { type in
                         Button(action: {
                             self.service.getActivityBy(parameters: [Endpoints.type:type.getName()])
-//                            print("test")
                         }) {
                             TypeView(type: type)
-                            }.accentColor(Color.primary)
+                        }.accentColor(Color.primary)
                     }
                 }
             }
