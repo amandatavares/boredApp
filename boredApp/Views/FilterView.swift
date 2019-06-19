@@ -42,7 +42,7 @@ struct FilterView : View {
             }.padding()
             
             Button(action: {
-//                self.service.getActivityBy(parameters: ([Endpoints.maxprice : String(priceRange)], [Endpoints.maxaccessibility : String(accessibilityRange)], [Endpoints.participants : String(stepperValue)]))
+//                self.service.getActivityBy(parameters: [[Endpoints.maxprice : String(self.priceRange)], [Endpoints.maxaccessibility : String(self.accessibilityRange)], [Endpoints.participants : String(self.stepperValue)]])
                 print("test")
             }) {
                 Text("Filter activities")
