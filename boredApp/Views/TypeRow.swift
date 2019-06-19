@@ -23,7 +23,7 @@ struct TypeRow : View {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(types.identified(by: \.self)) { type in
                         Button(action: {
-                            self.service.getActivityBy(endpoint: [EndpointsBy.type.description], param: [type.getName()])
+                            self.service.getActivityBy(parameters: [Endpoints.type:type.getName()])
 //                            print("test")
                         }) {
                             TypeView(type: type)

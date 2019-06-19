@@ -5,7 +5,7 @@
 //  Created by Amanda Tavares on 13/06/19.
 //  Copyright © 2019 Amanda Tavares. All rights reserved.
 //
-
+import Foundation
 import SwiftUI
 import Combine
 
@@ -17,15 +17,28 @@ class Service: BindableObject {
         }
     }
     var previousKey: String = ""
-    let baseUrl = "http://www.boredapi.com/api/activity/"
+//    let baseUrl = "http://www.boredapi.com/api/activity/"
+    
+   
+    var urlComponents: URLComponents {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "http"
+        urlComponents.host = "www.boredapi.com"
+        urlComponents.path = "/api/activity/"
+        urlComponents.queryItems = [URLQueryItem]()
 
+        return urlComponents
+    }
+   
+ 
     init() {
         getActivity()
     }
-    func getActivity(from url: String = "http://www.boredapi.com/api/activity/") {
-        // String to url
-        guard let url = URL(string: url) else {return}
+    func getActivity() {
         
+        // String to url
+        guard let url = self.urlComponents.url else {return}
+
         // Singleton of URLSession to catch data through URL
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else {return}
@@ -43,14 +56,33 @@ class Service: BindableObject {
                 print("Failed in \(error)")
             }
         }.resume()
-        
     }
-    func getActivityBy(endpoint:[String], param: [String]) {
-        zip(endpoint, param).forEach { (iEnd, iParam) in
-//            getActivity(from: self.baseUrl+iEnd+iParam)
-            //Lembrar de colocar o & entre os parametros. Está dando erro de notFound, mas o print está ok
-            print(iEnd)
-            print(iParam)
+    
+    func getActivityBy(parameters: [Endpoints:String]) {
+//        urlComponents.setQueryItems(with: parameters)
+        guard var queryItems = self.urlComponents.queryItems else {
+            print("Negocio is nil")
+            return
         }
+        for (key, value) in parameters {
+            let queryItem = URLQueryItem(name: key.rawValue, value: "\(value)")
+            queryItems.append(queryItem)
+        }
+//        if var queryItems = self.urlComponents.queryItems {
+//            for (key, value) in parameters {
+//                let queryItem = URLQueryItem(name: key.rawValue, value: "\(value)")
+//                queryItems.append(queryItem)
+//            }
+////            print(queryItems)
+//        }
+        print(queryItems)
+        print(self.urlComponents.queryItems)
+        if let queryItems = self.urlComponents.queryItems {
+//            print(queryItems)
+            for queryItem in queryItems {
+                print("\(queryItem.name): \(queryItem.value)")
+            }
+        }
+        print(urlComponents.url!)
     }
 }

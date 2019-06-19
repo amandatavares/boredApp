@@ -188,3 +188,11 @@ extension CaseIterable where Self: Hashable {
     }
 }
 #endif
+
+extension URLComponents {
+    
+    mutating func setQueryItems(with parameters: [Endpoints: String]) {
+        self.queryItems = parameters.map { URLQueryItem(name: $0.key.rawValue, value: $0.value) }
+    }
+    
+}

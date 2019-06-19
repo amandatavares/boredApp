@@ -9,16 +9,12 @@
 import Foundation
 import UIKit
 
-enum EndpointsBy: String {
-    case key = "?key="
-    case type = "?type="
-    case participants = "?participants="
-    case price = "?price="
-    case accessibility = "?accessibility="
-    
-    var description: String {
-        return self.rawValue
-    }
+enum Endpoints: String {
+    case key
+    case type
+    case participants
+    case maxprice
+    case maxaccessibility
 }
 
 enum Type: CaseIterable {

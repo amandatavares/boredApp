@@ -14,9 +14,8 @@ struct ToolButtonsView : View {
     var body: some View {
         return HStack {
             Button(action: {
-                self.service.getActivityBy(endpoint: [EndpointsBy.key.description], param: [self.service.previousKey])
+                self.service.getActivityBy(parameters: [Endpoints.key : self.service.previousKey])
 //                print("test")
-
             }) {
                 Text("Previous").padding()
             }
