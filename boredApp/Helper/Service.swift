@@ -55,19 +55,23 @@ class Service: BindableObject {
         }.resume()
     }
     
-    //No filtro, algumas requisições são feitas ao mesmo tempo, outras não. A ideia é que se saiba qual endpoint que será alterado no momento, e alterar o queryITems adicionando ou modificando o urlComponents.queryItems.
-    //urlComponents se acusa como get-only, e adicionar uma função mutating nas extensions nao ajudou
-    //não queria colocar os query itens na tora, mas faço se for preciso. o que quero de verdade é aprender a manipular essa struct maldita
-    func getActivityBy(parameters: [Endpoints:String]) {
-
+    func getActivityBy(parameters: [Endpoints:String]?) {
+        // clear queries
+        self.urlComponents.queryItems = nil
+        
         var queryItems = [URLQueryItem]()
         
-        for (key, value) in parameters {
-            let queryItem = URLQueryItem(name: key.rawValue, value: "\(value)")
-            queryItems.append(queryItem)
+        if let param = parameters {
+            for (key, value) in param {
+                let queryItem = URLQueryItem(name: key.rawValue, value: "\(value)")
+                queryItems.append(queryItem)
+            }
+            self.urlComponents.queryItems = queryItems
+        }
+        else {
+            self.urlComponents.queryItems = nil
         }
         
-        self.urlComponents.queryItems = queryItems
         getActivity(from: self.urlComponents.url)
         
     }

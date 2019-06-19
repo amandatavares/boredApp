@@ -19,7 +19,6 @@ enum Endpoints: String {
 
 enum Type: CaseIterable {
     case education
-    case recreational
     case social
     case diy
     case charity
@@ -27,7 +26,7 @@ enum Type: CaseIterable {
     case relaxation
     case music
     case busywork
-    
+    case recreational
 }
 
 extension Type {
@@ -36,7 +35,7 @@ extension Type {
         case .education:
             return "education"
         case .recreational:
-            return "recreative"
+            return "recreational"
         case .social:
             return "social"
         case .diy:
