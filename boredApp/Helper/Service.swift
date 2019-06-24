@@ -18,7 +18,6 @@ class Service: BindableObject {
     }
     var previousKey: String = ""
     let baseUrl = "http://www.boredapi.com/api/activity/"
-    
    
     var urlComponents: URLComponents
    
@@ -74,8 +73,29 @@ class Service: BindableObject {
             self.urlComponents.queryItems = nil
         }
         
-        getActivity(from: self.urlComponents.url)
+//        getActivity(from: self.urlComponents.url)
         
+        URLSession.shared.dataTask(with: self.urlComponents.url!) { (data, _, error) in
+            guard let data = data else {return}
+            if let err = error {
+                print("Error \(err)")
+            }
+            do {
+                let activityResult = try JSONDecoder().decode(Activity.self, from: data)
+                
+                //print(Type.allCases)
+                DispatchQueue.main.async {
+                    self.activityResult = activityResult
+                }
+            } catch let error {
+                print("Failed in \(error)")
+            }
+        }.resume()
     }
     
+    func dispatch() {
+        DispatchQueue.main.async {
+            self.didChange.send(self)
+        }
+    }
 }

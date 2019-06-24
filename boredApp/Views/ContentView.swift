@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView : View {
-    @State var service = Service()
+    @EnvironmentObject var service: Service
     @State var isPresented = false
     
     var body: some View {
@@ -22,7 +22,7 @@ struct ContentView : View {
                     .padding(.top, -60)
                 
                 ToolButtonsView(service: self.service)
-                
+            
             }
                 .navigationBarTitle(Text("Find an activity"))
                 .navigationBarItems(trailing:
@@ -37,12 +37,16 @@ struct ContentView : View {
     }
     var modalPresentation: some View {
         NavigationView {
-                FilterView(service: self.service)
+            FilterView(service: self.service, isPresented: $isPresented)
                 .font(.caption)
                 .navigationBarTitle(Text("Filter"), displayMode: .inline)
-                    .navigationBarItems(leading: Button(action: { self.isPresented = false } ) {
-                        Image(uiImage: UIImage(systemName: "xmark.circle.fill")!).padding()
-                        }, trailing: Button(action: { self.isPresented = false } ) {
+                    .navigationBarItems(leading: Button(action: {
+                        self.isPresented = false
+                    } ) {
+                            Image(uiImage: UIImage(systemName: "xmark.circle.fill")!).padding()
+                        }, trailing: Button(action: {
+                            self.isPresented = false                            
+                        } ) {
                             Image(uiImage: UIImage(systemName: "arrowshape.turn.up.left.circle.fill")!).padding()
                     }).accentColor(Color(UIColor: UIColor.systemPurple))
         }
@@ -51,6 +55,7 @@ struct ContentView : View {
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
+    @EnvironmentObject var service: Service
     static var previews: some View {
         ContentView()
     }

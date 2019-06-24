@@ -13,6 +13,7 @@ struct FilterView : View {
     @State var stepperValue:Int = 1
     @State var accessibilityRange: Double = 0
     @State var priceRange: Double = 0
+    @Binding var isPresented: Bool
     
     var body: some View {
         VStack {
@@ -42,8 +43,13 @@ struct FilterView : View {
             }.padding()
             
             Button(action: {
-//                self.service.getActivityBy(parameters: [[Endpoints.maxprice : String(self.priceRange)], [Endpoints.maxaccessibility : String(self.accessibilityRange)], [Endpoints.participants : String(self.stepperValue)]])
-                print("test")
+                print("Before: \(self.service.activityResult)")
+
+                self.service.getActivityBy(parameters: [[Endpoints.maxprice : String(self.priceRange)], [Endpoints.maxaccessibility : String(self.accessibilityRange)], [Endpoints.participants : String(self.stepperValue)]])
+                
+                print("After: \(self.service.activityResult)")
+//                print("\(url)")
+                self.isPresented = false
             }) {
                 Text("Filter activities")
                     .padding()
@@ -58,7 +64,7 @@ struct FilterView : View {
 #if DEBUG
 struct FilterView_Previews : PreviewProvider {
     static var previews: some View {
-        FilterView(service: Service())
+        FilterView(service: Service(), isPresented: .constant(true))
     }
 }
 #endif
