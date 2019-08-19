@@ -93,9 +93,4 @@ class Service: BindableObject {
         }.resume()
     }
     
-    func dispatch() {
-        DispatchQueue.main.async {
-            self.didChange.send(self)
-        }
-    }
 }
