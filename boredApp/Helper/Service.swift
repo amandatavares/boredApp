@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class Service: BindableObject {
+class Service: ObservableObject {
     var didChange = PassthroughSubject<Service, Never>()
     var activityResult = Activity() {
         didSet {

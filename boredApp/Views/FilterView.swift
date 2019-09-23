@@ -12,7 +12,7 @@ struct FilterView : View {
     var service: Service
     @State var stepperValue:Int = 1
     @State var accessibilityRange: Double = 0
-    @State var priceRange: Double = 0
+    @State var priceRange: Double = 0.0
     @Binding var isPresented: Bool
     
     var body: some View {
@@ -23,8 +23,9 @@ struct FilterView : View {
                     Spacer()
                     Text("\(priceRange)")
                 }
-                Slider(value: $priceRange, from: 0, through: 1, by: 0.1).accentColor(Color(UIColor: UIColor.systemPurple))
+                Slider(value: $priceRange, in: 0.0...1.0).accentColor(Color(UIColor: UIColor.systemPurple))
                 
+//                Slider(value: $priceRange, from: 0.0, through: 1.0, by: 0.1).accentColor(Color(UIColor: UIColor.systemPurple))
             }.padding()
 
             VStack {
@@ -33,13 +34,26 @@ struct FilterView : View {
                     Spacer()
                     Text("\(accessibilityRange)")
                 }
-                Slider(value: $accessibilityRange, from: 0, through: 1, by: 0.01).accentColor(Color(UIColor: UIColor.systemPurple))
+                Slider(value: $accessibilityRange, in: 0...1).accentColor(Color(UIColor: UIColor.systemPurple))
+//                Slider(value: $accessibilityRange, from: 0, through: 1, by: 0.01).accentColor(Color(UIColor: UIColor.systemPurple))
             }.padding()
             
             VStack(alignment: .leading) {
-                Stepper(value: $stepperValue, in: 1...10) {
-                    Text("Participants: \(stepperValue)")
+
+                Stepper(onIncrement: {
+                    self.stepperValue += 1
+                }, onDecrement: {
+                    self.stepperValue -= 1
+                }) {
+                    Text("Participants: ")
                 }
+                //TODO: Add stepperValue on label
+                
+//                Stepper("Participants: \(stepperValue)", value: $stepperValue, in: 1...10)
+//                Stepper(value: $stepperValue, in: 1...10, label: { Text(String(format: "%d", "Participants:", stepperValue)}) )
+//                Stepper(value: $stepperValue, in: 1...10) {
+//                    Text("Participants: \(stepperValue)")
+//                }
             }.padding()
             
             Button(action: {
@@ -55,7 +69,7 @@ struct FilterView : View {
                     .padding()
                     .foregroundColor(Color(UIColor: UIColor.white))
                     .background(Color(UIColor: UIColor.systemPurple))
-                    .cornerRadius(Length(5))
+                    .cornerRadius(5.0)
             }
         }.padding(.top, -150)
     }

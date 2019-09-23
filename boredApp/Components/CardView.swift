@@ -12,27 +12,29 @@ struct CardView : View {
     var activity: Activity
     
     var body: some View {
-        return NavigationButton(destination: CardDetail(activity: activity), isDetail: true) {
+        return NavigationLink(destination: CardDetail(activity: activity)) {
+            
             ZStack {
-                RoundedRectangle(cornerRadius: 10)
-//                    .padding()
-                    .relativeWidth(0.95)
-                    .relativeHeight(1)
+                RoundedRectangle(cornerRadius: CGFloat(integerLiteral: 10))
+//                    .relativeWidth(0.95)
+//                    .relativeHeight(1)
                     .foregroundColor(Color(UIColor: UIColor.systemGray6))
-                    .shadow(radius: Length(integerLiteral: 5))
+                    .shadow(radius: CGFloat(integerLiteral: 5))
                 VStack(alignment: .leading) {
                     Text(activity.activity)
                         .font(.title)
-                        .color(Color.primary)
+                        .foregroundColor(Color.primary)
                         .fontWeight(.semibold)
                         .lineLimit(5)
-                        .padding([.leading, .trailing])
+                        .padding()
+//                        .padding([.leading, .trailing])
 //                        .truncationMode(.tail)
                     Text(activity.type)
                         .font(.title)
                         .fontWeight(.light)
-                        .color(Color.secondary)
-                        .padding([.leading, .trailing])
+                        .foregroundColor(Color.secondary)
+                        .padding()
+//                        .padding([.leading, .trailing])
                 }.padding()
             }.padding()
         }

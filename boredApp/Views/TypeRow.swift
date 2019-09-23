@@ -16,20 +16,31 @@ struct TypeRow : View {
         VStack(alignment: HorizontalAlignment.leading) {
             Text("Categories")
                 .font(.headline)
-                .padding(.leading, 15)
-                .padding(.bottom, 10)
+                .padding(.leading,15)
+                .padding(.bottom,10)
             
-            ScrollView(showsHorizontalIndicator: false) {
+            ScrollView {
                 HStack(alignment: .top, spacing: 0) {
-                    ForEach(types.identified(by: \.self)) { type in
+                    ForEach(types, id: \.self) { type in
                         Button(action: {
-                            self.service.getActivityBy(parameters: [[Endpoints.type:type.getName()]])
+                            self.service.getActivityBy(parameters: [[Endpoints.type : type.getName() ]])
                         }) {
                             TypeView(type: type)
                         }.accentColor(Color.primary)
                     }
                 }
             }
+//            ScrollView(showsHorizontalIndicator: false) {
+//                HStack(alignment: .top, spacing: 0) {
+//                    ForEach(types.identified(by: \.self)) { type in
+//                        Button(action: {
+//                            self.service.getActivityBy(parameters: [[Endpoints.type:type.getName()]])
+//                        }) {
+//                            TypeView(type: type)
+//                        }.accentColor(Color.primary)
+//                    }
+//                }
+//            }
         }
     }
 }

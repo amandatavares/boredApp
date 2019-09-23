@@ -91,7 +91,7 @@ extension Type {
         case .cooking:
             return UIColor.systemOrange
         case .relaxation:
-            return UIColor.systemBrown
+            return UIColor.systemGray
         case .music:
             return UIColor.systemPink
         case .busywork:

@@ -31,7 +31,7 @@ struct ContentView : View {
                     }, label: {
                         Image(uiImage: UIImage(systemName: "line.horizontal.3.decrease.circle.fill")!).padding()
                     }).accentColor(Color(UIColor: UIColor.systemPurple))
-                ).presentation( isPresented ? Modal(modalPresentation, onDismiss: { self.isPresented.toggle() }) : nil )
+            ).sheet(isPresented: $isPresented, onDismiss: { self.isPresented.toggle() }) { self.modalPresentation }
 
         }
     }
