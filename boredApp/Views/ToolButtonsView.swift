@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct ToolButtonsView : View {
-    var service: Service
-
+    @EnvironmentObject var service: Service
     var body: some View {
         return HStack {
             Button(action: {
@@ -38,7 +37,7 @@ struct ToolButtonsView : View {
 #if DEBUG
 struct ToolButtonsView_Previews : PreviewProvider {
     static var previews: some View {
-        ToolButtonsView(service: Service())
+        ToolButtonsView().environmentObject(Service())
     }
 }
 #endif

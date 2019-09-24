@@ -15,13 +15,13 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             VStack {
-                TypeRow(types: Type.allCases, service: self.service)
+                TypeRow(types: Type.allCases)
                
                 CardView(activity: service.activityResult)
                     .offset(x: 0, y: -50)
                     .padding(.top, -60)
                 
-                ToolButtonsView(service: self.service)
+                ToolButtonsView()
             
             }
                 .navigationBarTitle(Text("Find an activity"))
@@ -37,7 +37,7 @@ struct ContentView : View {
     }
     var modalPresentation: some View {
         NavigationView {
-            FilterView(service: self.service, isPresented: $isPresented)
+            FilterView(isPresented: $isPresented)
                 .font(.caption)
                 .navigationBarTitle(Text("Filter"), displayMode: .inline)
                     .navigationBarItems(leading: Button(action: {
@@ -55,9 +55,9 @@ struct ContentView : View {
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
-    @EnvironmentObject var service: Service
+//    @EnvironmentObject var service: Service
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(Service())
     }
 }
 #endif

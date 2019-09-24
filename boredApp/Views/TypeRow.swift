@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TypeRow : View {
     var types: [Type]
-    var service: Service
+    @EnvironmentObject var service: Service
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {
@@ -30,17 +30,15 @@ struct TypeRow : View {
                     }
                 }
             }
-//            ScrollView(showsHorizontalIndicator: false) {
-//                HStack(alignment: .top, spacing: 0) {
-//                    ForEach(types.identified(by: \.self)) { type in
-//                        Button(action: {
-//                            self.service.getActivityBy(parameters: [[Endpoints.type:type.getName()]])
-//                        }) {
-//                            TypeView(type: type)
-//                        }.accentColor(Color.primary)
-//                    }
-//                }
-//            }
         }
     }
 }
+
+#if DEBUG
+struct TypeRow_Previews : PreviewProvider {
+//    @EnvironmentObject var service: Service
+    static var previews: some View {
+        TypeRow(types: Type.allCases).environmentObject(Service())
+    }
+}
+#endif

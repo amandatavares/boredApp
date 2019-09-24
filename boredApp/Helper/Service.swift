@@ -10,12 +10,9 @@ import SwiftUI
 import Combine
 
 class Service: ObservableObject {
-    var didChange = PassthroughSubject<Service, Never>()
-    var activityResult = Activity() {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    let objectWillChange = ObservableObjectPublisher()
+    @Published var activityResult = Activity()
+    
     var previousKey: String = ""
     let baseUrl = "http://www.boredapi.com/api/activity/"
    
@@ -28,7 +25,7 @@ class Service: ObservableObject {
         urlComponents.path = "/api/activity/"
         
         getActivity(from: self.urlComponents.url?.absoluteURL)
-//        print(self.urlComponents.url?.absoluteString)
+        print(self.urlComponents.url?.absoluteString)
     }
     func getActivity(from url: URL?) {
         
@@ -47,6 +44,7 @@ class Service: ObservableObject {
 //                print(Type.allCases)
                 DispatchQueue.main.async {
                     self.activityResult = activityResult
+                    print(self.activityResult.activity)
                 }
             } catch let error {
                 print("Failed in \(error)")

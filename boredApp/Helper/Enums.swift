@@ -81,7 +81,7 @@ extension Type {
         case .education:
             return UIColor.systemIndigo
         case .recreational:
-            return UIColor.systemGreen
+            return UIColor.systemGray
         case .social:
             return UIColor.systemRed
         case .diy:
@@ -91,7 +91,7 @@ extension Type {
         case .cooking:
             return UIColor.systemOrange
         case .relaxation:
-            return UIColor.systemGray
+            return UIColor.systemGreen
         case .music:
             return UIColor.systemPink
         case .busywork:

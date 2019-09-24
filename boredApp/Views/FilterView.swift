@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FilterView : View {
-    var service: Service
+    @EnvironmentObject var service: Service
     @State var stepperValue:Int = 1
     @State var accessibilityRange: Double = 0
     @State var priceRange: Double = 0.0
@@ -78,7 +78,7 @@ struct FilterView : View {
 #if DEBUG
 struct FilterView_Previews : PreviewProvider {
     static var previews: some View {
-        FilterView(service: Service(), isPresented: .constant(true))
+        FilterView(isPresented: .constant(true)).environmentObject(Service())
     }
 }
 #endif
