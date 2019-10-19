@@ -10,7 +10,6 @@ import SwiftUI
 import Combine
 
 class Service: ObservableObject {
-    let objectWillChange = ObservableObjectPublisher()
     @Published var activityResult = Activity()
     
     var previousKey: String = ""
@@ -25,7 +24,7 @@ class Service: ObservableObject {
         urlComponents.path = "/api/activity/"
         
         getActivity(from: self.urlComponents.url?.absoluteURL)
-        print(self.urlComponents.url?.absoluteString)
+        print(self.urlComponents.url?.absoluteString ?? "")
     }
     func getActivity(from url: URL?) {
         

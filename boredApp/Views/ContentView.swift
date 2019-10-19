@@ -15,13 +15,13 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             VStack {
-                TypeRow(types: Type.allCases)
+                TypeRow(types: Type.allCases).environmentObject(service)
                
                 CardView(activity: service.activityResult)
                     .offset(x: 0, y: -50)
                     .padding(.top, -60)
                 
-                ToolButtonsView()
+                ToolButtonsView().environmentObject(service)
             
             }
                 .navigationBarTitle(Text("Find an activity"))

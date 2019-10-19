@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ToolButtonsView : View {
     @EnvironmentObject var service: Service
+    
     var body: some View {
         return HStack {
             Button(action: {
