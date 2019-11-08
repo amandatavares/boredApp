@@ -9,22 +9,27 @@
 import SwiftUI
 
 struct ToolButtonsView : View {
-    @State var service = Service()
+    @EnvironmentObject var service: Service
     
     var body: some View {
         return HStack {
             Button(action: {
-                self.service.getActivityBy(endpoint: EndpointsBy.key.description, param: self.service.previousKey)
+                self.service.getActivityBy(parameters: [[Endpoints.key : self.service.previousKey]])
+//                print("test")
             }) {
-                Text("Previous").padding()
+                Text("Previous")
+                    .padding()
+                    .accentColor(Color(UIColor: UIColor.systemPurple))
             }
             Spacer()
             Button(action: {
                 self.service.previousKey = self.service.activityResult.key
                 
-                self.service.getActivity()
+                self.service.getActivityBy(parameters: nil)
             }) {
-                Text("Next").padding()
+                Text("Next")
+                    .padding()
+                    .accentColor(Color(UIColor: UIColor.systemPurple))
             }
         }
     }
@@ -33,7 +38,7 @@ struct ToolButtonsView : View {
 #if DEBUG
 struct ToolButtonsView_Previews : PreviewProvider {
     static var previews: some View {
-        ToolButtonsView()
+        ToolButtonsView().environmentObject(Service())
     }
 }
 #endif

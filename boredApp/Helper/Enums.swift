@@ -9,21 +9,16 @@
 import Foundation
 import UIKit
 
-enum EndpointsBy: String {
-    case key = "?key="
-    case type = "?type="
-    case participants = "?participants="
-    case price = "?price="
-    case accessibility = "?accessibility="
-    
-    var description: String {
-        return self.rawValue
-    }
+enum Endpoints: String {
+    case key
+    case type
+    case participants
+    case maxprice
+    case maxaccessibility
 }
 
 enum Type: CaseIterable {
     case education
-    case recreational
     case social
     case diy
     case charity
@@ -31,7 +26,7 @@ enum Type: CaseIterable {
     case relaxation
     case music
     case busywork
-    
+    case recreational
 }
 
 extension Type {
@@ -40,7 +35,7 @@ extension Type {
         case .education:
             return "education"
         case .recreational:
-            return "recreative"
+            return "recreational"
         case .social:
             return "social"
         case .diy:
@@ -55,8 +50,6 @@ extension Type {
             return "music"
         case .busywork:
             return "busywork"
-        default:
-            return " "
         }
     }
     
@@ -80,8 +73,6 @@ extension Type {
             return UIImage(systemName: "music.note")!
         case .busywork:
             return UIImage(systemName: "speedometer")!
-        default:
-            return UIImage(systemName: "questionmark")!
         }
     }
     
@@ -90,7 +81,7 @@ extension Type {
         case .education:
             return UIColor.systemIndigo
         case .recreational:
-            return UIColor.systemGreen
+            return UIColor.systemGray
         case .social:
             return UIColor.systemRed
         case .diy:
@@ -100,13 +91,11 @@ extension Type {
         case .cooking:
             return UIColor.systemOrange
         case .relaxation:
-            return UIColor.systemPurple
+            return UIColor.systemGreen
         case .music:
             return UIColor.systemPink
         case .busywork:
             return UIColor.systemBlue
-        default:
-            return UIColor.gray
         }
     }
 }

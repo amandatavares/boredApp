@@ -10,26 +10,35 @@ import SwiftUI
 
 struct TypeRow : View {
     var types: [Type]
-    @State var service = Service()
+    @EnvironmentObject var service: Service
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {
             Text("Categories")
                 .font(.headline)
-                .padding(.leading, 15)
-                .padding(.bottom, 10)
+                .padding(.leading,15)
+                .padding(.bottom,10)
             
-            ScrollView(showsHorizontalIndicator: false) {
+            ScrollView {
                 HStack(alignment: .top, spacing: 0) {
-                    ForEach(types.identified(by: \.self)) { type in
+                    ForEach(types, id: \.self) { type in
                         Button(action: {
-                            self.service.getActivityBy(endpoint: EndpointsBy.type.description, param: type.getName())
+                            self.service.getActivityBy(parameters: [[Endpoints.type : type.getName() ]])
                         }) {
                             TypeView(type: type)
-                            }.accentColor(Color.primary)
+                        }.accentColor(Color.primary)
                     }
                 }
             }
         }
     }
 }
+
+#if DEBUG
+struct TypeRow_Previews : PreviewProvider {
+//    @EnvironmentObject var service: Service
+    static var previews: some View {
+        TypeRow(types: Type.allCases).environmentObject(Service())
+    }
+}
+#endif

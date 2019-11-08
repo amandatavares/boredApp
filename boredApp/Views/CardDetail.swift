@@ -15,7 +15,8 @@ struct CardDetail : View {
         VStack(alignment: .leading, spacing: 10) {
             Text(activity.type)
                 .font(.title)
-                .color(.secondary)
+                .foregroundColor(.secondary)
+//                .color(.secondary)
             Divider()
             HStack {
                 List {
@@ -30,7 +31,7 @@ struct CardDetail : View {
                 }
             }
             .padding(.horizontal)
-            .relativeHeight(0.9)
+//            .relativeHeight(0.9)
         }
             .navigationBarTitle(Text(activity.activity))
             .padding(.horizontal)

@@ -137,7 +137,6 @@ struct SystemColor {
             SystemColor(name: "darkText", color: .darkText),
             SystemColor(name: "lightText", color: .lightText),
             SystemColor(name: "systemBlue", color: .systemBlue),
-            SystemColor(name: "systemBrown", color: .systemBrown),
             SystemColor(name: "systemGreen", color: .systemGreen),
             SystemColor(name: "systemIndigo", color: .systemIndigo),
             SystemColor(name: "systemOrange", color: .systemOrange),
@@ -153,6 +152,14 @@ struct SystemColor {
             SystemColor(name: "systemGray5", color: .systemGray5),
             SystemColor(name: "systemGray6", color: .systemGray6)
         ]
+    }
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }
 
@@ -180,3 +187,9 @@ extension CaseIterable where Self: Hashable {
     }
 }
 #endif
+
+extension URLComponents {
+    mutating func setQueryItems(with newQueryItem: URLQueryItem) {
+        self.queryItems?.append(newQueryItem)
+    }
+}
