@@ -55,8 +55,6 @@ extension Type {
             return "music"
         case .busywork:
             return "busywork"
-        default:
-            return " "
         }
     }
     
@@ -80,8 +78,8 @@ extension Type {
             return UIImage(systemName: "music.note")!
         case .busywork:
             return UIImage(systemName: "speedometer")!
-        default:
-            return UIImage(systemName: "questionmark")!
+//        default:
+//            return UIImage(systemName: "questionmark")!
         }
     }
     
@@ -105,8 +103,8 @@ extension Type {
             return UIColor.systemPink
         case .busywork:
             return UIColor.systemBlue
-        default:
-            return UIColor.gray
+//        default:
+//            return UIColor.gray
         }
     }
 }

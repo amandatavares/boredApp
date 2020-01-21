@@ -9,13 +9,10 @@
 import SwiftUI
 import Combine
 
-class Service: BindableObject {
-    var didChange = PassthroughSubject<Service, Never>()
-    var activityResult = Activity() {
-        didSet {
-            didChange.send(self)
-        }
-    }
+class Service: ObservableObject {
+    
+    @Published var activityResult = Activity()
+
     var previousKey: String = ""
     let baseUrl = "http://www.boredapi.com/api/activity/"
 

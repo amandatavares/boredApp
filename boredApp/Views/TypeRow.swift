@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TypeRow : View {
-    var types: [Type]
+    var types: [Type] 
     @State var service = Service()
     
     var body: some View {
@@ -19,14 +19,14 @@ struct TypeRow : View {
                 .padding(.leading, 15)
                 .padding(.bottom, 10)
             
-            ScrollView(showsHorizontalIndicator: false) {
-                HStack(alignment: .top, spacing: 0) {
-                    ForEach(types.identified(by: \.self)) { type in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top, spacing: CGFloat(0)){
+                    ForEach(types, id: \.self) { type in
                         Button(action: {
                             self.service.getActivityBy(endpoint: EndpointsBy.type.description, param: type.getName())
                         }) {
                             TypeView(type: type)
-                            }.accentColor(Color.primary)
+                        }.accentColor(Color.primary)
                     }
                 }
             }

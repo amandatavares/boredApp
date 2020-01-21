@@ -10,12 +10,12 @@ import SwiftUI
 
 struct ContentView : View {
     @State var service = Service()
-    @State var isPresented = false
+    @State private var isPresented: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
-                TypeRow(types: Type.allCases)
+                TypeRow(types: Type.AllCases())
                
                 CardView(activity: service.activityResult)
                     .offset(x: 0, y: -50)
@@ -28,9 +28,11 @@ struct ContentView : View {
                 .navigationBarItems(trailing:
                     Button(action: {
                         self.isPresented = true
-                    }, label: {
+                    }){
                         Image(uiImage: UIImage(systemName: "line.horizontal.3.decrease.circle.fill")!).padding()
-                    })).presentation( isPresented ? Modal(FilterView(), onDismiss: { self.isPresented.toggle() }) : nil )
+                    }.sheet(isPresented: $isPresented) {
+                        FilterView(isPresented: self.isPresented)
+                    })
         }
     }
 }

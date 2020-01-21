@@ -10,20 +10,20 @@ import SwiftUI
 
 struct CardView : View {
     var activity: Activity
-    
+//    destination: CardDetail(activity: activity), isDetail: true
     var body: some View {
-        return NavigationButton(destination: CardDetail(activity: activity), isDetail: true) {
+        NavigationLink(destination: CardDetail(activity: activity)) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
 //                    .padding()
-                    .relativeWidth(0.9)
-                    .relativeHeight(1)
+//                    .relativeWidth(0.9)
+//                    .relativeHeight(1)
                     .foregroundColor(Color.white)
-                    .shadow(radius: Length(integerLiteral: 5))
+                    .shadow(radius: 5.0)
                 VStack(alignment: .leading) {
                     Text(activity.activity)
                         .font(.title)
-                        .color(Color.primary)
+                        .foregroundColor(Color.primary)
                         .fontWeight(.semibold)
                         .lineLimit(3)
                         .padding([.leading, .bottom, .trailing])
@@ -31,7 +31,7 @@ struct CardView : View {
                     Text(activity.type)
                         .font(.title)
                         .fontWeight(.light)
-                        .color(Color.secondary)
+                        .foregroundColor(Color.secondary)
                         .padding([.leading, .trailing])
                 }.padding()
             }.padding()
