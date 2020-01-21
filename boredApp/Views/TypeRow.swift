@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TypeRow : View {
     var types: [Type] 
-    @State var service = Service()
+    @ObservedObject var service = Service()
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {

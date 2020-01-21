@@ -9,20 +9,19 @@
 import SwiftUI
 
 struct ContentView : View {
-    @State var service = Service()
+    @ObservedObject var service = Service()
     @State private var isPresented: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
-                TypeRow(types: Type.AllCases())
+                TypeRow(types: Type.allCases)
                
-                CardView(activity: service.activityResult)
-                    .offset(x: 0, y: -50)
-                    .padding(.top, -50)
-                
+                GeometryReader { geometry in
+                CardView(activity: self.service.activityResult)
+                    .frame(width: geometry.size.width*0.9, height: geometry.size.width*0.8, alignment: .center)
+                }
                 ToolButtonsView()
-                
             }
                 .navigationBarTitle(Text("Find an activity"))
                 .navigationBarItems(trailing:
