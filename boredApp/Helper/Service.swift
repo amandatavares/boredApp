@@ -35,11 +35,14 @@ class Service: ObservableObject {
 //                print(Type.allCases)
                 DispatchQueue.main.async {
                     self.activityResult = activityResult
+                    print(self.activityResult)
                 }
             } catch let error {
                 print("Failed in \(error)")
             }
         }.resume()
+        
+        print(url)
         
     }
     func getActivityBy(endpoint:String, param: String) {

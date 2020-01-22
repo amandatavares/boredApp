@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TypeRow : View {
     var types: [Type] 
-    @ObservedObject var service = Service()
+    @EnvironmentObject var service: Service
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {
@@ -20,7 +20,7 @@ struct TypeRow : View {
                 .padding(.bottom, 10)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: CGFloat(0)){
+                HStack(alignment: .top, spacing: 0){
                     ForEach(types, id: \.self) { type in
                         Button(action: {
                             self.service.getActivityBy(endpoint: EndpointsBy.type.description, param: type.getName())
@@ -33,3 +33,10 @@ struct TypeRow : View {
         }
     }
 }
+#if DEBUG
+struct TypeRow_Previews : PreviewProvider {
+    static var previews: some View {
+        TypeRow(types: Type.allCases)
+    }
+}
+#endif

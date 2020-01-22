@@ -14,14 +14,13 @@ struct ContentView : View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                TypeRow(types: Type.allCases)
+//            this spacing 150 is wrong in 150 ways
+            VStack(alignment: .center, spacing: 150) {
+                TypeRow(types: Type.allCases).environmentObject(service)
                
-                GeometryReader { geometry in
                 CardView(activity: self.service.activityResult)
-                    .frame(width: geometry.size.width*0.9, height: geometry.size.width*0.8, alignment: .center)
-                }
-                ToolButtonsView()
+                
+                ToolButtonsView().environmentObject(service)
             }
                 .navigationBarTitle(Text("Find an activity"))
                 .navigationBarItems(trailing:

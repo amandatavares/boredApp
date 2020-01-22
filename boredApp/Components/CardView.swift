@@ -12,29 +12,31 @@ struct CardView : View {
     var activity: Activity
 //    destination: CardDetail(activity: activity), isDetail: true
     var body: some View {
-        NavigationLink(destination: CardDetail(activity: activity)) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-//                    .padding()
-//                    .relativeWidth(0.9)
-//                    .relativeHeight(1)
-                    .foregroundColor(Color.white)
-                    .shadow(radius: 5.0)
-                VStack(alignment: .leading) {
-                    Text(activity.activity)
-                        .font(.title)
-                        .foregroundColor(Color.primary)
-                        .fontWeight(.semibold)
-                        .lineLimit(3)
-                        .padding([.leading, .bottom, .trailing])
-                        .truncationMode(.tail)
-                    Text(activity.type)
-                        .font(.title)
-                        .fontWeight(.light)
-                        .foregroundColor(Color.secondary)
-                        .padding([.leading, .trailing])
+        GeometryReader { geometry in
+            NavigationLink(destination: CardDetail(activity: self.activity)) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+    //                    .padding()
+    //                    .relativeWidth(0.9)
+    //                    .relativeHeight(1)
+                        .foregroundColor(Color.white)
+                        .shadow(radius: 5.0)
+                    VStack(alignment: .leading) {
+                        Text(self.activity.activity)
+                            .font(.title)
+                            .foregroundColor(Color.primary)
+                            .fontWeight(.semibold)
+                            .lineLimit(3)
+                            .padding([.leading, .bottom, .trailing])
+                            .truncationMode(.tail)
+                        Text(self.activity.type)
+                            .font(.title)
+                            .fontWeight(.light)
+                            .foregroundColor(Color.secondary)
+                            .padding([.leading, .trailing])
+                    }.padding()
                 }.padding()
-            }.padding()
+            }.frame(width: geometry.size.width*0.9, height: geometry.size.width*0.8, alignment: .center)
         }
     }
 }

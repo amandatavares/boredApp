@@ -13,16 +13,18 @@ struct TypeView : View {
     var type: Type
     
     var body: some View {
-       VStack(alignment: .center) {
+       VStack(alignment: .center, spacing: 0) {
+        GeometryReader { geometry in
             ZStack {
                 Circle()
-                    .foregroundColor(Color(UIColor: type.getColor()))
-//                    .relativeWidth(1)
-//                    .relativeHeight(1)
-                Image(uiImage: type.getIcon()).padding()
+                    .foregroundColor(Color(UIColor: self.type.getColor()))
+                    .frame(width: geometry.size.width*0.8, height: geometry.size.height*0.5, alignment: .center)
+                Image(uiImage: self.type.getIcon()).padding()
             }
-        Text(type.getName()).foregroundColor(Color.primary)
-                .frame(minWidth: 0, idealWidth: 80, maxWidth: .infinity, minHeight: 0, idealHeight: 10, maxHeight: 30, alignment: Alignment.center)
+        }
+        Text(type.getName())
+            .foregroundColor(Color.primary)
+            .frame(minWidth: 0, idealWidth: 80, maxWidth: .infinity, minHeight: 0, idealHeight: 20, maxHeight: 30, alignment: Alignment.center)
         }
         .padding(.leading, 15)
     }

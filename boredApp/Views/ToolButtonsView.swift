@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ToolButtonsView : View {
-    @ObservedObject var service = Service()
+    @EnvironmentObject var service: Service
     
     var body: some View {
         return HStack {
